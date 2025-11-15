@@ -57,6 +57,9 @@ jobs:
   # ==========================================
   cd-on-main:
     name: Test + Build + Publish Docker Image
+    permissions:
+      contents: read
+      packages: write
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
 
@@ -84,8 +87,8 @@ jobs:
 
       - name: Construir imagen Docker
         run: |
-          docker build -t ghcr.io/${{ github.repository_owner }}/taller_semana1:latest .
+          docker build -t ghcr.io/${{ github.repository }}/taller_semana1:latest .
 
       - name: Publicar imagen en GitHub Packages
         run: |
-          docker push ghcr.io/${{ github.repository_owner }}/taller_semana1:latest
+          docker push ghcr.io/${{ github.repository }}/taller_semana1:latest
