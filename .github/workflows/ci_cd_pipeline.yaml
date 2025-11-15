@@ -16,14 +16,16 @@ jobs:
     name: Ejecutar pruebas en Pull Request
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request'
+
     steps:
       - name: Checkout del código
         uses: actions/checkout@v4
 
-      - name: Agregar comentario inicial al PR
-        uses: marocchino/sticky-pull-request-comment@v2
+      - name: Comentar inicio del pipeline
+        uses: mshick/add-pr-comment@v2
         with:
-          message: "🚀 CI/CD en acción. Ejecutando tareas …"
+          message: |
+            🚀 CI/CD en acción. Ejecutando tareas …
 
       - name: Configurar Python
         uses: actions/setup-python@v5
@@ -40,10 +42,11 @@ jobs:
           cd app
           pytest -v tests/
 
-      - name: Agregar comentario final al PR
-        uses: marocchino/sticky-pull-request-comment@v2
+      - name: Comentar finalización exitosa
+        uses: mshick/add-pr-comment@v2
         with:
-          message: "✅ CI/CD terminado con éxito."
+          message: |
+            ✅ CI/CD terminado con éxito.
 
   # ==========================================
   # 2️⃣ Evento: Commit/Merge en main
@@ -52,6 +55,7 @@ jobs:
     name: Test + Build + Publish Docker Image
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
+
     steps:
       - name: Checkout del código
         uses: actions/checkout@v4
