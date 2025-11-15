@@ -87,8 +87,12 @@ jobs:
 
       - name: Construir imagen Docker
         run: |
-          docker build -t ghcr.io/${{ github.repository }}/taller_semana1:latest .
+          IMAGE_NAME=$(echo "ghcr.io/${{ github.repository }}/taller_semana1:latest" | tr '[:upper:]' '[:lower:]')
+          echo "Construyendo imagen: $IMAGE_NAME"
+          docker build -t $IMAGE_NAME .
 
       - name: Publicar imagen en GitHub Packages
         run: |
-          docker push ghcr.io/${{ github.repository }}/taller_semana1:latest
+          IMAGE_NAME=$(echo "ghcr.io/${{ github.repository }}/taller_semana1:latest" | tr '[:upper:]' '[:lower:]')
+          echo "Publicando imagen: $IMAGE_NAME"
+          docker push $IMAGE_NAME
