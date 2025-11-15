@@ -3,7 +3,7 @@ name: CI/CD Predictor Médico
 permissions:
   pull-requests: write
   contents: read
-  
+
 on:
   pull_request:
     branches:
@@ -71,9 +71,8 @@ jobs:
 
       - name: Instalar dependencias y correr pruebas
         run: |
-          cd app
           pip install -r requirements.txt pytest
-          pytest -v tests/
+          pytest -v apptests/
 
       - name: Login en GitHub Packages
         uses: docker/login-action@v3
