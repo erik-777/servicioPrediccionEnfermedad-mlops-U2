@@ -1,5 +1,9 @@
 name: CI/CD Predictor Médico
 
+permissions:
+  pull-requests: write
+  contents: read
+  
 on:
   pull_request:
     branches:
