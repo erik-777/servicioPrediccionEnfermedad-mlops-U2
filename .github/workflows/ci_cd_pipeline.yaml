@@ -71,6 +71,7 @@ jobs:
 
       - name: Instalar dependencias y correr pruebas
         run: |
+          cd app
           pip install -r requirements.txt pytest
           export PYTHONPATH=$PYTHONPATH:$(pwd)/app
           pytest -v app/tests/
