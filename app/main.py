@@ -10,9 +10,9 @@ def home():
 @app.route('/predecir', methods=['POST'])
 def predecir():
     data = request.get_json()
-    v1 = data.get("valor1")
-    v2 = data.get("valor2")
-    v3 = data.get("valor3")
+    v1 = data.get("fiebre")
+    v2 = data.get("precion")
+    v3 = data.get("frecuencia")
 
     resultado = predecir_enfermedad(v1, v2, v3)
     return jsonify({"resultado": resultado})
