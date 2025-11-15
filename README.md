@@ -117,5 +117,4 @@ Taller_Semana1/
 - Pipeline CI/CD automatizado con:
   - **Pruebas unitarias** (`pytest`) ejecutadas en GitHub Actions.  
   - **Comentarios automáticos** en Pull Requests.  
-  - **Construcción y publicación** de imagen Docker en GitHub Packages.
 
