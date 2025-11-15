@@ -1,8 +1,8 @@
-def predecir_enfermedad(valor1: float, valor2: float, valor3: float) -> str:
+def predecir_enfermedad(fiebre: float, precion: float, frecuencia: float) -> str:
     """
     Función simulada que retorna un diagnóstico según los síntomas.
     """
-    score = valor1 + valor2 + valor3
+    score = fiebre + precion + frecuencia
 
     if score < 5:
         return "NO ENFERMO"

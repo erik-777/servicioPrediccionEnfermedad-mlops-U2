@@ -1,6 +1,6 @@
 # 🩺 Predictor Médico – Simulación en Docker  
 
-Este servicio implementa una **simulación de modelo de predicción médica** que, a partir de tres valores de síntomas ingresados por el usuario, determina el posible estado de salud del paciente.  
+Este servicio implementa una **simulación de modelo de predicción médica** que, a partir de tres valores (Friebre, precision, frecuencia) de síntomas ingresados por el usuario, determina el posible estado de salud del paciente.  
 
 El modelo no realiza predicciones reales, sino que **emula la lógica de decisión** de un sistema de diagnóstico automatizado, devolviendo uno de los siguientes estados:  
 
@@ -11,7 +11,7 @@ El modelo no realiza predicciones reales, sino que **emula la lógica de decisi�
 
 ## 🧱 Construcción de la imagen
 ```bash
-docker build -t taler_semana1 .
+docker build -t taller_semana1 .
 ```
 ## Ejecuion del Servicio
 ```bash
