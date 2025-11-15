@@ -1,5 +1,9 @@
 name: CI/CD Predictor Médico
 
+permissions:
+  pull-requests: write
+  contents: read
+
 on:
   pull_request:
     branches:
@@ -16,14 +20,16 @@ jobs:
     name: Ejecutar pruebas en Pull Request
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request'
+
     steps:
       - name: Checkout del código
         uses: actions/checkout@v4
 
-      - name: Agregar comentario inicial al PR
-        uses: marocchino/sticky-pull-request-comment@v2
+      - name: Comentar inicio del pipeline
+        uses: mshick/add-pr-comment@v2
         with:
-          message: "🚀 CI/CD en acción. Ejecutando tareas …"
+          message: |
+            🚀 CI/CD en acción. Ejecutando tareas …
 
       - name: Configurar Python
         uses: actions/setup-python@v5
@@ -37,13 +43,14 @@ jobs:
 
       - name: Ejecutar pruebas unitarias
         run: |
-          cd app
-          pytest -v tests/
+          export PYTHONPATH=$PYTHONPATH:$(pwd)/app
+          pytest -v app/tests/
 
-      - name: Agregar comentario final al PR
-        uses: marocchino/sticky-pull-request-comment@v2
+      - name: Comentar finalización exitosa
+        uses: mshick/add-pr-comment@v2
         with:
-          message: "✅ CI/CD terminado con éxito."
+          message: |
+            ✅ CI/CD terminado con éxito.
 
   # ==========================================
   # 2️⃣ Evento: Commit/Merge en main
@@ -52,6 +59,7 @@ jobs:
     name: Test + Build + Publish Docker Image
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
+
     steps:
       - name: Checkout del código
         uses: actions/checkout@v4
@@ -63,9 +71,9 @@ jobs:
 
       - name: Instalar dependencias y correr pruebas
         run: |
-          cd app
           pip install -r requirements.txt pytest
-          pytest -v tests/
+          export PYTHONPATH=$PYTHONPATH:$(pwd)/app
+          pytest -v app/tests/
 
       - name: Login en GitHub Packages
         uses: docker/login-action@v3
