@@ -71,10 +71,9 @@ jobs:
 
       - name: Instalar dependencias y correr pruebas
         run: |
-          cd app
-          pip install -r requirements.txt pytest
+          pip install -r app/requirements.txt pytest
           export PYTHONPATH=$PYTHONPATH:$(pwd)/app
-          pytest -v app/tests/
+          pytest -v app/tests --maxfail=1 --disable-warnings
 
       - name: Login en GitHub Packages
         uses: docker/login-action@v3
