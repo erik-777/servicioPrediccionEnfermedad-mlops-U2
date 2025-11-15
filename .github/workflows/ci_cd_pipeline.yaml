@@ -43,6 +43,7 @@ jobs:
 
       - name: Ejecutar pruebas unitarias
         run: |
+          export PYTHONPATH=$PYTHONPATH:$(pwd)
           pytest -v app/tests/
 
       - name: Comentar finalización exitosa
@@ -71,7 +72,8 @@ jobs:
       - name: Instalar dependencias y correr pruebas
         run: |
           pip install -r requirements.txt pytest
-          pytest -v apptests/
+          export PYTHONPATH=$PYTHONPATH:$(pwd)
+          pytest -v app/tests/
 
       - name: Login en GitHub Packages
         uses: docker/login-action@v3
