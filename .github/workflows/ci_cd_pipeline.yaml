@@ -43,8 +43,7 @@ jobs:
 
       - name: Ejecutar pruebas unitarias
         run: |
-          cd app
-          pytest -v tests/
+          pytest -v app/tests/
 
       - name: Comentar finalización exitosa
         uses: mshick/add-pr-comment@v2
