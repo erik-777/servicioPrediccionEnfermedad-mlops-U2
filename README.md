@@ -193,6 +193,7 @@ Tecnología recomendada:
 
 ## 3. Diseño del  Pipeline
 
+![This is an alt text.](/imgs/DIseñoMlOPS.drawio.png "This is a sample image.")
 
 
 
@@ -212,6 +213,19 @@ Tecnología recomendada:
 
 
 ## 5. Changelog
+
+| Componente    | Semana 1            | Versión Final (actual, tus archivos)                               |
+| ------------- | ------------------- | ------------------------------------------------------------------ |
+| Predicción    | Función simple      | Función con cálculo escalar y 5 niveles de enfermedad              |
+| Logging       | No existía          | Archivo JSONL `predicciones.log` generado automáticamente          |
+| Endpoints     | Sólo `/predecir`    | Ahora `/` y `/reporte` incluidos                                   |
+| CI/CD         | No existía          | Pipeline integrado de pruebas (Github Actions declarado en README) |
+| Testing       | No existía          | `tests/test_model.py` creado con dos pruebas unitarias reales      |
+| Documentación | README básico       | README completo con endpoints y logs                               |
+| Arquitectura  | Sin pipeline formal | Pipeline MLOps completo incorporado                                |
+| Despliegue    | Docker simple       | Docker + API + preparación para cloud                              |
+| Monitoreo     | No existía          | Propuesto: Prometheus + EvidentlyAI                                |
+| Ingeniería    | Nivel básico        | Redacción profesional alineada a MLOps                             |
 
 
 
