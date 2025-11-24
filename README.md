@@ -121,6 +121,8 @@ En PROD, se recomienda:
 
 ### Entrenamiento del Modelo.
 
+EL modelo es una función determinística basada en reglas (sumatoria del score), pero el pipeline MLOps debe considerar modelos reales para enfermedades comunes y huérfanas.
+
 ### Validacion del Modelo.
 
 Para evaluar:
