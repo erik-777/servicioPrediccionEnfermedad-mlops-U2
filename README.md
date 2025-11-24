@@ -13,7 +13,7 @@ El sistema **no utiliza un modelo de Machine Learning real**, sino que emula la 
 - `ENFERMEDAD TERMINAL`  
 
 Además, el servicio mantiene un registro persistente de las predicciones realizadas y permite obtener un **reporte estadístico** con la siguiente información:
-- Número total de predicciones por categoría.  
+- Número total de predicciones por categoría.
 - Las últimas 5 predicciones realizadas.  
 - Fecha y hora de la última predicción.
 
@@ -120,6 +120,8 @@ En PROD, se recomienda:
 * Feature Store: Feast
 
 ### Entrenamiento del Modelo.
+
+EL modelo es una función determinística basada en reglas (sumatoria del score), pero el pipeline MLOps debe considerar modelos reales para enfermedades comunes y huérfanas.
 
 ### Validacion del Modelo.
 
